@@ -1,0 +1,30 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "eris": "^0.8.6"
+  },
+  "name": "andysha-reactor-bot",
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
+  },
+  "description": "A barebones Node.js app using [Express 4](http://expressjs.com/).",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"no test\" && exit 1",
+    "start": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/and-sha/reactor-bot.git"
+  },
+  "author": "andysha#2148",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/and-sha/reactor-bot/issues"
+  },
+  "homepage": "https://github.com/and-sha/reactor-bot#readme"
+}
