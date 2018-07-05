@@ -84,6 +84,8 @@ bot.registerCommand("dog", (msg) => {
     console.log("Пёсель подан");
   });
 }, {
-
+  aliases: ["пес", "пёс", "песель", "пёсель"],
+  description: "Выдаёт рандомного пёселя",
+  fullDescription: "Выдаёт рандомного пёселя с https://random.dog/"
 });
 bot.connect();
