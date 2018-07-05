@@ -52,4 +52,20 @@ bot.on("messageReactionAdd", (msg, emoji, id) =>{
   }
 });
 
+bot.registerCommand("choose", (msg, args) => {
+  msg.channel.sendTyping();
+  var variants = args.toString().split(",|,");
+  var result = "Я решил за тебя, что тебе сделать:\n";
+  for (let i = 0; i < variants.length; i++) {
+    result = result + `${variants[i]} - ${Math.floor(Math.random() * 100) + 1}% необходимости\n`;
+  }
+  return result;
+}, {
+  argsRequired: true,
+  description: "Выбрать что-нибудь",
+  fullDescription: "Решить за Вас, что поделать или выбрать",
+  usage: "Синтаксис: *choose <вариант 1> | [вариант 2] | [вариант  n]",
+  aliases: ["выбор", "выбери", "выбрать"]
+});
+
 bot.connect();
