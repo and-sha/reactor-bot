@@ -73,8 +73,7 @@ bot.registerCommand("dog", (msg) => {
   var dog = "";
   request('https://random.dog/woof', function(err, resp, body) {
     dog = body.toString();
-    var res = "https://random.dog/" + dog
-    msg.channel.createMessage(res)
+    var res = "https://random.dog/" + dog;
     bot.createMessage(msg.channel.id, {
       embed: {
         title: "Ваш пёс:",
