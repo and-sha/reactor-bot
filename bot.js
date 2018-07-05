@@ -1,4 +1,5 @@
 const Eris = require("eris");
+var request = require('request');
 var bot = new Eris.CommandClient("NDI2NTUzMjUyNjk2MjkzMzc2.Dh8H5w.XuCFAVKv7nAd4fBjN1JnVjMrWvY", {}, {
     description: "Бот с разными полезностями для Просто Сервера",
     owner: "andysha#2148",
@@ -68,4 +69,21 @@ bot.registerCommand("choose", (msg, args) => {
   aliases: ["выбор", "выбери", "выбрать"]
 });
 
+bot.registerCommand("dog", (msg) => {
+  var dog = "";
+  request('https://random.dog/woof', function(err, resp, body) {
+    dog = body.toString();
+    var res = "https://random.dog/" + dog
+    msg.channel.createMessage(res)
+    bot.createMessage(msg.channel.id, {
+      embed: {
+        title: "Ваш пёс:",
+        image: {url: res}
+      }
+    });
+    console.log("Пёсель подан");
+  });
+}, {
+
+});
 bot.connect();

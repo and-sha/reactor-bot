@@ -2,7 +2,8 @@
   "requires": true,
   "lockfileVersion": 1,
   "dependencies": {
-    "eris": "^0.8.6"
+    "eris": "^0.8.6",
+    "request": "^2.87.0"
   },
   "name": "andysha-reactor-bot",
   "engines": {
