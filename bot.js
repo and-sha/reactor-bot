@@ -53,7 +53,7 @@ bot.on("messageReactionAdd", (msg, emoji, id) =>{
 });
 
 bot.registerCommand("choose", (msg, args) => {
-  msg.channel.sendTyping();
+  console.log(`Выбрал за ${msg.author.username}, что делать`);
   var variants = args.toString().split(",|,");
   var result = "Я решил за тебя, что тебе сделать:\n";
   for (let i = 0; i < variants.length; i++) {
