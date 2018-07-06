@@ -29,6 +29,7 @@ bot.on("messageCreate", (msg) => {
   //Функционал для ОНЛ
   if(msg.channel.id == 352033994587504640 && ( typeof msg.attachments[0] !== 'undefined' || msg.content.search('((?:http|https)(?::\\/{2}[\\w]+)(?:[\\/|\\.]?)(?:[^\\s"]*))') !== -1)){
     console.log("Заценил мемасик в ОНЛ");
+	  msg.addReaction("bayan:464610690628452352");
     msg.addReaction("thonk:380570863873032192");
     msg.addReaction("lul1:463923338851385345");
     msg.addReaction("lul2:463923398079283201");
@@ -38,6 +39,7 @@ bot.on("messageCreate", (msg) => {
   //Функционал для Просто Сервера
   if(msg.channel.id == 371446270264606742 && ( typeof msg.attachments[0] !== 'undefined' || msg.content.search('((?:http|https)(?::\\/{2}[\\w]+)(?:[\\/|\\.]?)(?:[^\\s"]*))') !== -1)){
     console.log("Заценил мемасик на Просто Сервере");
+    msg.addReaction("bayan:464610690628452352");
     msg.addReaction("thonk:380570863873032192");
     msg.addReaction("lul1:463923338851385345");
     msg.addReaction("lul2:463923398079283201");
