@@ -89,4 +89,96 @@ bot.registerCommand("dog", (msg) => {
   description: "Выдаёт рандомного пёселя",
   fullDescription: "Выдаёт рандомного пёселя с https://random.dog/"
 });
+//ЗОНА ГОВНОКОДА
+//определение цветов
+var r = "431725915744108554";
+var b = "431726028352782337";
+var y = "431726071512039425";
+var g = "431726114034155520";
+var o = "431726166303440916";
+var c = "431726206593794049";
+var p = "431726267507671050";
+
+//функция - помощник для команды окраски (необходима оптимизация)
+function removeColors(m, add){
+	m.removeRole(r);
+  m.removeRole(b);
+  m.removeRole(y);
+  m.removeRole(g);
+  m.removeRole(o);
+  m.removeRole(c);
+  m.removeRole(p);
+	m.addRole(add);
+};
+
+var color = bot.registerCommand("color", (msg) => {}, {
+	aliases: ["цвет"],
+  description: "Даёт цвет",
+  fullDescription: "Окрашивает вас",
+	requirements: {roleIDs: ["425149859712991262"]}
+});
+color.registerSubcommand("red", (msg) => {
+  var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
+  removeColors(member, r);
+}, {
+  aliases: ["красный", "к", "r"],
+  description: "Даёт красный цвет",
+  fullDescription: "Окрашивает вас в красный",
+  requirements: {roleIDs: ["425149859712991262"]}
+});
+color.registerSubcommand("blue", (msg) => {
+  var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
+  removeColors(member, b);
+}, {
+  aliases: ["синий", "с", "b"],
+  description: "Даёт синий цвет",
+	fullDescription: "Окрашивает вас в синий",
+  requirements: {roleIDs: ["425149859712991262"]}
+});
+color.registerSubcommand("yellow", (msg) => {
+  var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
+  removeColors(member, y);
+}, {
+  aliases: ["жёлтый", "желтый", "y", "ж"],
+  description: "Даёт жёлтый цвет",
+	fullDescription: "Окрашивает вас в жёлтый",
+  requirements: {roleIDs: ["425149859712991262"]}
+});
+color.registerSubcommand("green", (msg) => {
+  var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
+  removeColors(member, g);
+}, {
+  aliases: ["зелёный", "зеленый", "з", "g"],
+  description: "Даёт зелёный цвет",
+	fullDescription: "Окрашивает вас в зелёный",
+  requirements: {roleIDs: ["425149859712991262"]}
+});
+color.registerSubcommand("orange", (msg) => {
+  var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
+  removeColors(member, o);
+}, {
+  aliases: ["оранжевый", "o", "о"],
+  description: "Даёт оранжевый цвет",
+	fullDescription: "Окрашивает вас в оранжевый",
+  requirements: {roleIDs: ["425149859712991262"]}
+});
+color.registerSubcommand("cyan", (msg) => {
+  var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
+  removeColors(member, c);
+}, {
+  aliases: ["бирюзовый", "б", "c"],
+  description: "Даёт бирюзовый цвет",
+	fullDescription: "Окрашивает вас в бирюзовый",
+  requirements: {roleIDs: ["425149859712991262"]}
+});
+color.registerSubcommand("purple", (msg) => {
+  var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
+  removeColors(member, p);
+}, {
+  aliases: ["фиолетовый", "p", "ф"],
+  description: "Даёт фиолетовый цвет",
+  fullDescription: "Окрашивает вас в фиолетовый",
+  requirements: {roleIDs: ["425149859712991262"]}
+});
+///ЗОНА ГОВНОКОДА
 bot.connect();
