@@ -127,6 +127,7 @@ var color = bot.registerCommand("color", (msg) => {}, {
 color.registerSubcommand("red", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, r);
+	return "Поменял ваш цвет на красный";
 }, {
   aliases: ["красный", "к", "r"],
   description: "Даёт красный цвет",
@@ -136,6 +137,7 @@ color.registerSubcommand("red", (msg) => {
 color.registerSubcommand("blue", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, b);
+  return "Поменял ваш цвет на синий";
 }, {
   aliases: ["синий", "с", "b"],
   description: "Даёт синий цвет",
@@ -145,6 +147,7 @@ color.registerSubcommand("blue", (msg) => {
 color.registerSubcommand("yellow", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, y);
+  return "Поменял ваш цвет на жёлтый";
 }, {
   aliases: ["жёлтый", "желтый", "y", "ж"],
   description: "Даёт жёлтый цвет",
@@ -154,6 +157,7 @@ color.registerSubcommand("yellow", (msg) => {
 color.registerSubcommand("green", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, g);
+  return "Поменял ваш цвет на зелёный";
 }, {
   aliases: ["зелёный", "зеленый", "з", "g"],
   description: "Даёт зелёный цвет",
@@ -163,6 +167,7 @@ color.registerSubcommand("green", (msg) => {
 color.registerSubcommand("orange", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, o);
+  return "Поменял ваш цвет на оранжевый";
 }, {
   aliases: ["оранжевый", "o", "о"],
   description: "Даёт оранжевый цвет",
@@ -172,6 +177,7 @@ color.registerSubcommand("orange", (msg) => {
 color.registerSubcommand("cyan", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, c);
+  return "Поменял ваш цвет на бирюзовый";
 }, {
   aliases: ["бирюзовый", "б", "c"],
   description: "Даёт бирюзовый цвет",
@@ -181,6 +187,7 @@ color.registerSubcommand("cyan", (msg) => {
 color.registerSubcommand("purple", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, p);
+  return "Поменял ваш цвет на фиолетовый";
 }, {
   aliases: ["фиолетовый", "p", "ф"],
   description: "Даёт фиолетовый цвет",
