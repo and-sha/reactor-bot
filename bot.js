@@ -1,13 +1,19 @@
 const Eris = require("eris");
 var request = require('request');
+const fs = require('fs');
+var obj;
 var bot = new Eris.CommandClient("NDI2NTUzMjUyNjk2MjkzMzc2.Dh8H5w.XuCFAVKv7nAd4fBjN1JnVjMrWvY", {}, {
-    description: "Бот с разными полезностями для Просто Сервера",
-    owner: "andysha#2148",
-    prefix: "*"
+  description: "Бот с разными полезностями для Просто Сервера",
+  owner: "andysha#2148",
+  prefix: "*"
+});
+fs.readFile('info.json', 'utf8', function (err, data) {
+  if (err) throw err;
+  obj = JSON.parse(data);
 });
 bot.on("ready", () => {
-    console.log("Готов!");
-    bot.editStatus("online", {name: "мемасики | *help", type: 3});
+	console.log("Готов!");
+  bot.editStatus("online", {name: "мемасики | *help", type: 3});
 });
 
 bot.registerCommandAlias("помощь", "help");
@@ -19,7 +25,7 @@ bot.on("messageCreate", (msg) => {
   }
   if(typeof msg.mentions[0] !== 'undefined'){
     msg.mentions.forEach(item => {
-      if(item.id == 463122204377219082){
+      if(item.id == 426553252696293376){
         console.log(`${msg.author.username} меня призвал!`);
         msg.channel.createMessage("Не надо меня призывать, *help - помощь по командам");
         return;
@@ -60,6 +66,7 @@ bot.registerCommand("choose", (msg, args) => {
   var variants = args.toString().split(",|,");
   var result = "Я решил за тебя, что тебе сделать:\n";
   for (let i = 0; i < variants.length; i++) {
+    variants[i] = variants[i].split(',').join(' ')
     result = result + `${variants[i]} - ${Math.floor(Math.random() * 100) + 1}% необходимости\n`;
   }
   return result;
@@ -180,5 +187,7 @@ color.registerSubcommand("purple", (msg) => {
   fullDescription: "Окрашивает вас в фиолетовый",
   requirements: {roleIDs: ["425149859712991262"]}
 });
+
+
 ///ЗОНА ГОВНОКОДА
 bot.connect();
