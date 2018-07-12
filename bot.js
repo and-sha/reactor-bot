@@ -2,7 +2,7 @@ const Eris = require("eris");
 var request = require('request');
 const fs = require('fs');
 var obj;
-var bot = new Eris.CommandClient("NDI2NTUzMjUyNjk2MjkzMzc2.Dh8H5w.XuCFAVKv7nAd4fBjN1JnVjMrWvY", {}, {
+var bot = new Eris.CommandClient(process.env.token, {}, {
   description: "Бот с разными полезностями для Просто Сервера",
   owner: "andysha#2148",
   prefix: "*",
