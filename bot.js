@@ -5,7 +5,8 @@ var obj;
 var bot = new Eris.CommandClient("NDI2NTUzMjUyNjk2MjkzMzc2.Dh8H5w.XuCFAVKv7nAd4fBjN1JnVjMrWvY", {}, {
   description: "Бот с разными полезностями для Просто Сервера",
   owner: "andysha#2148",
-  prefix: "*"
+  prefix: "*",
+  defaultHelpCommand: false,
 });
 fs.readFile('info.json', 'utf8', function (err, data) {
   if (err) throw err;
@@ -16,7 +17,6 @@ bot.on("ready", () => {
   bot.editStatus("online", {name: "мемасики | *help", type: 3});
 });
 
-bot.registerCommandAlias("помощь", "help");
 bot.on("messageCreate", (msg) => {
   //Функционал для обоих серверов
   if(msg.mentionEveryone){
@@ -55,16 +55,22 @@ bot.on("messageCreate", (msg) => {
 });
 
 bot.on("messageReactionAdd", (msg, emoji, id) =>{
-  if(emoji.name == "face_palm" || emoji.name == "🤦"){
+  /*if(emoji.name == "face_palm" || emoji.name == "🤦"){
     console.log(`${msg.author.username} опечатался, ${msg.channel.guild.members.get(id).username} нашёл опечатку`);
     msg.channel.createMessage("тест");
-  }
+  }*/
+  if(emoji.name == "🔽" && msg.embeds[0].title == "Список команд бота:" && id != "426553252696293376"){
+    msg.edit({ "embed": {
+      "title": "Другие функции:",
+      "description": "На данный момент бот так же может реагировать на мемы из спец. каналов, на призывы @everyоne, призывы самого себя"
+    }});
+  };
 });
 
 bot.registerCommand("choose", (msg, args) => {
   console.log(`Выбрал за ${msg.author.username}, что делать`);
   var variants = args.toString().split(",|,");
-  var result = "Я решил за тебя, что тебе сделать:\n";
+  var result = `Я решил за ${msg.author.username}, что делать:\n`;
   for (let i = 0; i < variants.length; i++) {
     variants[i] = variants[i].split(',').join(' ')
     result = result + `${variants[i]} - ${Math.floor(Math.random() * 100) + 1}% необходимости\n`;
@@ -75,7 +81,8 @@ bot.registerCommand("choose", (msg, args) => {
   description: "Выбрать что-нибудь",
   fullDescription: "Решить за Вас, что поделать или выбрать",
   usage: "Синтаксис: *choose <вариант 1> | [вариант 2] | [вариант  n]",
-  aliases: ["выбор", "выбери", "выбрать"]
+  aliases: ["выбор", "выбери", "выбрать"],
+  deleteCommand: true
 });
 
 bot.registerCommand("dog", (msg) => {
@@ -85,16 +92,17 @@ bot.registerCommand("dog", (msg) => {
     var res = "https://random.dog/" + dog;
     bot.createMessage(msg.channel.id, {
       embed: {
-        title: "Ваш пёс:",
+        title: `Пёс для ${msg.author.username}:`,
         image: {url: res}
       }
     });
-    console.log("Пёсель подан");
+    console.log(`Пёсель для ${msg.author.username} подан`);
   });
 }, {
   aliases: ["пес", "пёс", "песель", "пёсель"],
   description: "Выдаёт рандомного пёселя",
-  fullDescription: "Выдаёт рандомного пёселя с https://random.dog/"
+  fullDescription: "Выдаёт рандомного пёселя с https://random.dog/",
+  deleteCommand: true
 });
 //ЗОНА ГОВНОКОДА
 //определение цветов
@@ -122,79 +130,120 @@ var color = bot.registerCommand("color", (msg) => {}, {
 	aliases: ["цвет"],
   description: "Даёт цвет",
   fullDescription: "Окрашивает вас",
-	requirements: {roleIDs: ["425149859712991262"]}
+	requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
 });
 color.registerSubcommand("red", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, r);
-	return "Поменял ваш цвет на красный";
+	return `Поменял цвет ${msg.author.username} на красный`;
 }, {
   aliases: ["красный", "к", "r"],
   description: "Даёт красный цвет",
   fullDescription: "Окрашивает вас в красный",
-  requirements: {roleIDs: ["425149859712991262"]}
+  requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
 });
 color.registerSubcommand("blue", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, b);
-  return "Поменял ваш цвет на синий";
+  return `Поменял цвет ${msg.author.username} на синий`;
 }, {
   aliases: ["синий", "с", "b"],
   description: "Даёт синий цвет",
 	fullDescription: "Окрашивает вас в синий",
-  requirements: {roleIDs: ["425149859712991262"]}
+  requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
 });
 color.registerSubcommand("yellow", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, y);
-  return "Поменял ваш цвет на жёлтый";
+  return `Поменял цвет ${msg.author.username} на жёлтый`;
 }, {
   aliases: ["жёлтый", "желтый", "y", "ж"],
   description: "Даёт жёлтый цвет",
 	fullDescription: "Окрашивает вас в жёлтый",
-  requirements: {roleIDs: ["425149859712991262"]}
+  requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
 });
 color.registerSubcommand("green", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, g);
-  return "Поменял ваш цвет на зелёный";
+  return `Поменял цвет ${msg.author.username} на зелёный`;
 }, {
   aliases: ["зелёный", "зеленый", "з", "g"],
   description: "Даёт зелёный цвет",
 	fullDescription: "Окрашивает вас в зелёный",
-  requirements: {roleIDs: ["425149859712991262"]}
+  requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
 });
 color.registerSubcommand("orange", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, o);
-  return "Поменял ваш цвет на оранжевый";
+  return `Поменял цвет ${msg.author.username} на оранжевый`;
 }, {
   aliases: ["оранжевый", "o", "о"],
   description: "Даёт оранжевый цвет",
 	fullDescription: "Окрашивает вас в оранжевый",
-  requirements: {roleIDs: ["425149859712991262"]}
+  requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
 });
 color.registerSubcommand("cyan", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, c);
-  return "Поменял ваш цвет на бирюзовый";
+  return `Поменял цвет ${msg.author.username} на бирюзовый`;
 }, {
   aliases: ["бирюзовый", "б", "c"],
   description: "Даёт бирюзовый цвет",
 	fullDescription: "Окрашивает вас в бирюзовый",
-  requirements: {roleIDs: ["425149859712991262"]}
+  requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
 });
 color.registerSubcommand("purple", (msg) => {
   var member = bot.guilds.get("371444757102329857").members.get(msg.author.id);
   removeColors(member, p);
-  return "Поменял ваш цвет на фиолетовый";
+  return `Поменял цвет ${msg.author.username} на фиолетовый`;
 }, {
   aliases: ["фиолетовый", "p", "ф"],
   description: "Даёт фиолетовый цвет",
   fullDescription: "Окрашивает вас в фиолетовый",
-  requirements: {roleIDs: ["425149859712991262"]}
+  requirements: {roleIDs: ["425149859712991262"]},
+  deleteCommand: true
+});
+///ЗОНА ГОВНОКОДА
+
+bot.registerCommand("help", (msg) => {
+  msg.channel.createMessage({
+    "embed": {
+      "title": "Список команд бота:",
+      "description": "Если необходима помощь по дополнительым функциям бота, отреагируйте 🔽",
+      "fields": [
+        {
+          "name": "help",
+          "value": "Это сообщение",
+          "inline": true
+        },
+        {
+          "name": "choose",
+          "value": "Выбирает за вас, что вам делать\nАлиасы: `выбор`, `выбери`, `выбрать`\nСинтаксис: `*choose <вариант 1> | [вариант 2] | [вариант  n]`",
+          "inline": true
+        },
+        {
+          "name": "dog",
+          "value": "Выдаёт рандомного пёселя с https://random.dog/\nАлиасы: `пес`, `пёс`, `песель`, `пёсель`",
+          "inline": true
+        },
+        {
+          "name": "color",
+          "value": "Окрашивает вас\nАлиас: `цвет`\nСинтаксис: `*color <red|blue|green|yellow|orange|cyan|purple>`\n(у каждого из цветов есть алиас на русском и из первой буквы)",
+          "inline": true
+        }
+      ],
+    }}).then(rsp => {
+      rsp.addReaction("🔽");
+    });
+}, {
+
 });
 
-
-///ЗОНА ГОВНОКОДА
 bot.connect();
