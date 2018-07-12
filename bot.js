@@ -146,7 +146,7 @@ var color = bot.registerCommand("color", (msg, args) => {
   var color = re.exec(args[0]);
   if(color != null){
     var correctColor = Number.parseInt(color[0].slice(1), 16);
-    bot.createRole("371444757102329857", {name: "test", color: correctColor}).then( (role) => {
+    bot.createRole("371444757102329857", {name: "", color: correctColor}).then( (role) => {
       role.editPosition(20);
       var m = bot.guilds.get("371444757102329857").members.get(msg.author.id);
       deleteCustomColor(m);
