@@ -272,6 +272,11 @@ bot.registerCommand("help", (msg) => {
           "value": "Окрашивает вас\nАлиас: `цвет`\nСинтаксис: `*color <red|blue|green|yellow|orange|cyan|purple|цвет в формате hex (#a0a0a0)>`\n(у каждого из цветов есть алиас на русском и из первой буквы)\nСвой цвет можно получить [тут](https://www.google.ru/search?q=hex+color)",
           "inline": true
         }
+        {
+          "name": "change",
+          "value": "Позволяет доверенным менять название и описание основного канала\nАлиасы: `поменять`, `изменить`\nСинтаксис: `*change <name|название|имя> [название канала (оставить пустым для #главный)]`\n`*change <topic|description|описание> [описание канала (оставить пустым для \"Общение происходит тут\")]`",
+          "inline": true
+        }
       ],
     }}).then(rsp => {
       rsp.addReaction("🔽");
@@ -303,7 +308,7 @@ bot.registerCommand("delete", (msg, args) => {
   deleteCommand: true
 });
 
-var change = bot.registerCommand("change", {} ,{
+var change = bot.registerCommand("change", (msg, args) => {} ,{
   reqiurements: {
     roleIDs: "371444965860966402"
   },
@@ -311,13 +316,14 @@ var change = bot.registerCommand("change", {} ,{
   aliases: ["поменять", "изменить"]
 });
 
-change.registerSubcommand("name", {
-  if (args == undefined){
+change.registerSubcommand("name", (msg, args) => {
+  if (args == ""){
     bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({name: "главный"});
   } else {
     args = args.join("-");
     bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({name: args});
   };
+  return;
 }, {
   reqiurements: {
     roleIDs: "371444965860966402"
@@ -326,13 +332,14 @@ change.registerSubcommand("name", {
   aliases: ["название", "имя"]
 });
 
-change.registerSubcommand("topic", {
-  if (args == undefined){
+change.registerSubcommand("topic", (msg, args) => {
+  if (args == ""){
     bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({topic: "Общение происходит тут"});
   } else {
     args = args.join(" ");
     bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({topic: args});
   };
+  return;
 }, {
   reqiurements: {
     roleIDs: "371444965860966402"
