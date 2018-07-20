@@ -71,7 +71,7 @@ bot.on("messageReactionAdd", (msg, emoji, id) =>{
 
 bot.registerCommand("choose", (msg, args) => {
   console.log(`Выбрал за ${msg.author.username}, что делать`);
-  var variants = args.toString().split(",|,");
+  var variants = args.join(" ").split(" | ");
   var result = `Я решил за ${msg.author.username}, что делать:\n`;
   for (let i = 0; i < variants.length; i++) {
     variants[i] = variants[i].split(',').join(' ')
@@ -301,6 +301,44 @@ bot.registerCommand("delete", (msg, args) => {
     }
   },
   deleteCommand: true
+});
+
+var change = bot.registerCommand("change", {} ,{
+  reqiurements: {
+    roleIDs: "371444965860966402"
+  },
+  deleteCommand: true,
+  aliases: ["поменять", "изменить"]
+});
+
+change.registerSubcommand("name", {
+  if (args == undefined){
+    bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({name: "главный"});
+  } else {
+    args = args.join("-");
+    bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({name: args});
+  };
+}, {
+  reqiurements: {
+    roleIDs: "371444965860966402"
+  },
+  deleteCommand: true,
+  aliases: ["название", "имя"]
+});
+
+change.registerSubcommand("topic", {
+  if (args == undefined){
+    bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({topic: "Общение происходит тут"});
+  } else {
+    args = args.join(" ");
+    bot.guilds.get("371444757102329857").channels.get("371447189815296001").edit({topic: args});
+  };
+}, {
+  reqiurements: {
+    roleIDs: "371444965860966402"
+  },
+  deleteCommand: true,
+  aliases: ["описание", "description"]
 });
 
 /* код правил, сохранён для дальнейших изменений
