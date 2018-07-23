@@ -85,6 +85,7 @@ bot.on("messageDelete", (msg) => {
 bot.on("messageDeleteBulk", (msgs) => {
   msgs.forEach(msg => {
     if (typeof msg.content !== 'undefined'){
+      var date = new Date(msg.timestamp);
       if (typeof msg.attachments[0] !== 'undefined'){
         bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}".\nИнформация о прикреплениях: ${msg.attachments}`);
       } else {
