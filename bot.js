@@ -73,7 +73,7 @@ bot.on("messageDelete", (msg) => {
   if (typeof msg.content !== 'undefined'){
     var date = new Date(msg.timestamp);
     if (typeof msg.attachments[0] !== 'undefined'){
-      bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}".\nИнформация о прикреплениях: ${msg.attachments}`);
+      bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}". К сообщению было что-то прикреплено.`);
     } else {
       bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}".`);
     };
@@ -87,7 +87,7 @@ bot.on("messageDeleteBulk", (msgs) => {
     if (typeof msg.content !== 'undefined'){
       var date = new Date(msg.timestamp);
       if (typeof msg.attachments[0] !== 'undefined'){
-        bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}".\nИнформация о прикреплениях: ${msg.attachments}`);
+        bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}". К сообщению было что-то прикреплено.`);
       } else {
         bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}".`);
       };
