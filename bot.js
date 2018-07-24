@@ -73,9 +73,9 @@ bot.on("messageDelete", (msg) => {
   if (typeof msg.content !== 'undefined'){
     var date = new Date(msg.timestamp);
     if (typeof msg.attachments[0] !== 'undefined'){
-      bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}". К сообщению было что-то прикреплено.`);
+      bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()} в <#${msg.channel.id}> (#${msg.channel.name}): "${msg.content}". К сообщению было что-то прикреплено.`);
     } else {
-      bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}".`);
+      bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()} в <#${msg.channel.id}> (#${msg.channel.name}): "${msg.content}".`);
     };
   } else {
     bot.createMessage("470759072967426049", "Удалено сообщение.");
@@ -87,9 +87,9 @@ bot.on("messageDeleteBulk", (msgs) => {
     if (typeof msg.content !== 'undefined'){
       var date = new Date(msg.timestamp);
       if (typeof msg.attachments[0] !== 'undefined'){
-        bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}". К сообщению было что-то прикреплено.`);
+        bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()} в <#${msg.channel.id}> (#${msg.channel.name}): "${msg.content}". К сообщению было что-то прикреплено.`);
       } else {
-        bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()}: "${msg.content}".`);
+        bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()} в <#${msg.channel.id}> (#${msg.channel.name}): "${msg.content}".`);
       };
     } else {
       bot.createMessage("470759072967426049", "Удалено сообщение.");
@@ -378,34 +378,34 @@ change.registerSubcommand("topic", (msg, args) => {
 
 /* код правил, сохранён для дальнейших изменений
 var hook = bot.registerCommand("hook", (msg) => {},{});
-hook.registerSubcommand("faewfaefxzcvf4th", (msg) => {
+hook.registerSubcommand("faewfaefxzcvf4tsadwdah", (msg) => {
   bot.executeWebhook("467847950035451914", "hN20xQemTfGhpSGDtiap5lEkmaVP8CMOo7vU4RISaKlR6mmhKThDMXh1ee0x92vKoEr", {
     embeds: [{
       "author": {"icon_url": "https://puu.sh/AuSYy/3763b788ec.jpg", "name": "Добро пожаловать на Просто Сервер"},
       "description": "На данном сервере можно общаться на различную тематику, найти себе напарника/соперника для игры. Так же тут лениво выходит различное творчество andysha#2148",
       "footer": {"text":"Последняя редакция правил от"},
-      "timestamp": "2018-07-15T01:00:22.000Z",
+      "timestamp": "2018-07-24T01:00:18.000Z",
       "color": 9090812
     },
     {
       "author": {"icon_url": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/141/heavy-exclamation-mark-symbol_2757.png", "name": "Правило первое:"},
       "title": "*Спам запрещён*",
       "description": "Спамом считается отправка нескольких одинаковых сообwений подряд",
-      "footer": {"text":"Спам будет караться предупреждением -> 6-часовым мутом -> баном"},
+      "footer": {"text":"Спам будет караться предупреждением -> 6-часовыми мутами"},
       "color": 12704255
     },
     {
       "author": {"icon_url": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/141/heavy-exclamation-mark-symbol_2757.png", "name": "Правило второе:"},
       "title": "*NSFW запрещено*",
       "description": "За NSFW считаются изображения/словесное описание эротики, порнографии, натуралистичного насилия, гуро",
-      "footer": {"text": "Отправка NSFW будет караться суточным мутом -> баном"},
+      "footer": {"text": "Отправка NSFW будет караться суточным мутом"},
       "color": 12704255
     },
     {
       "author": {"icon_url": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/141/heavy-exclamation-mark-symbol_2757.png", "name": "Правило третье:"},
-      "title": "*Реклама по принципу взаиморекламы*",
-      "description": "Рекламировать свои сервера можно по предварительной договорённости со мной при условиях, что\n1) Вы модератор/администратор сервера,\n2) Вы позволяете мне прорекламировать этот сервер или реклама изначально разрешена правилами Вашего сервера",
-      "footer": {"text": "Реклама без соблюдения договорённостей наказывается баном"},
+      "title": "*Обмен инвайтами по принципу взаиморекламы*",
+      "description": "Кидать инвайты серверов можно по предварительной договорённости со мной при условиях, что\n1) Вы модератор/администратор сервера,\n2) Вы позволяете мне прорекламировать этот сервер или реклама изначально разрешена правилами Вашего сервера\n(если пользователь просит инвайт на какой-то сервер, то отправьте его в лс пользователя, не в общий чат)",
+      "footer": {"text": "Отправка инвайтов без соблюдения договорённостей наказывается баном"},
       "color": 12704255
     },
     {
