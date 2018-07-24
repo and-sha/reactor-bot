@@ -78,7 +78,7 @@ bot.on("messageDelete", (msg) => {
       bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()} в <#${msg.channel.id}> (#${msg.channel.name}): "${msg.content}".`);
     };
   } else {
-    bot.createMessage("470759072967426049", "Удалено сообщение.");
+    bot.createMessage("470759072967426049", "Удалено сообщение из канала <#${msg.channel.id}> (#${msg.channel.name}).");
   };
 });
 
@@ -92,7 +92,7 @@ bot.on("messageDeleteBulk", (msgs) => {
         bot.createMessage("470759072967426049", `Удалено сообщение от ${msg.author.username}, написанное ${date.toUTCString()} в <#${msg.channel.id}> (#${msg.channel.name}): "${msg.content}".`);
       };
     } else {
-      bot.createMessage("470759072967426049", "Удалено сообщение.");
+      bot.createMessage("470759072967426049", "Удалено сообщение из канала <#${msg.channel.id}> (#${msg.channel.name}).");
     };
   });
 });
@@ -318,7 +318,7 @@ bot.registerCommand("delete", (msg, args) => {
     if (args[0] == 0){
       return "ПОДУМОЙ";
     } else {
-      if (msg.mentions != undefined){
+      if (typeof msg.mentions[0] !== 'undefined'){
         msg.channel.purge(args[0], (msgdel) => {
           if (msgdel.author == msg.mentions[0]) {return true;} else {return false;};
         });
