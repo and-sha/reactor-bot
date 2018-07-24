@@ -97,6 +97,17 @@ bot.on("messageDeleteBulk", (msgs) => {
   });
 });
 
+bot.on("guildMemberUpdate", (guild, member) => {
+  if (guild.id == "371444757102329857"){
+    member.roles.forEach(role => {
+      if (role == "471106194035965953" && member.nick != "Тупой ник"){
+        member.edit({nick: "Тупой ник"});
+        member.user.getDMChannel().createMessage("Администрация Просто Сервера решила, что у Вас тупой ник. Исправьте его и обратитесь к администратору");
+      };
+    });
+  };
+});
+
 bot.registerCommand("choose", (msg, args) => {
   console.log(`Выбрал за ${msg.author.username}, что делать`);
   var variants = args.join(" ").split(" | ");
