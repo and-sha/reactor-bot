@@ -102,7 +102,7 @@ bot.on("guildMemberUpdate", (guild, member) => {
     member.roles.forEach(role => {
       if (role == "471106194035965953" && member.nick != "Тупой ник"){
         member.edit({nick: "Тупой ник"});
-        member.user.getDMChannel().createMessage("Администрация Просто Сервера решила, что у Вас тупой ник. Исправьте его и обратитесь к администратору");
+        bot.createMessage(member.user.getDMChannel(), "Администрация Просто Сервера решила, что у Вас тупой ник. Исправьте его и обратитесь к администратору");
       };
     });
   };
