@@ -108,6 +108,16 @@ bot.on("guildMemberUpdate", (guild, member) => {
   };
 });
 
+bot.on("guildMemberAdd", (guild, member) => {
+  if (guild.id == "477364505119031307"){
+    if (member.bot){
+      member.addRole("477367092119601152");
+    } else {
+      member.addRole("477367141658525715");
+    };
+  };
+});
+
 bot.registerCommand("choose", (msg, args) => {
   console.log(`Выбрал за ${msg.author.username}, что делать`);
   var variants = args.join(" ").split(" | ");
