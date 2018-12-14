@@ -51,6 +51,7 @@ bot.on("messageCreate", (msg) => {
     msg.addReaction("lul2:463923398079283201");
     msg.addReaction("lul3:463923428135796737");
     msg.addReaction("lul4:463923464420458516");
+    msg.addReaction("rolf:469056924625928202");
   }
 });
 
@@ -65,6 +66,15 @@ bot.on("messageReactionAdd", (msg, emoji, id) =>{
         "title": "Другие функции:",
         "description": "На данный момент бот так же может реагировать на мемы из спец. каналов, на призывы @everyоne, призывы самого себя"
       }});
+    };
+  };
+  if(emoji.name == "rolf:469056924625928202" && msg.author.id == id){
+    msg.removeReaction("rolf:469056924625928202", id);
+  };
+  if(emoji.name == "rolf:469056924625928202" && msg.author.id != id){
+    var count = msg.reactions.get("rolf:469056924625928202").count
+    if(count > 2){
+      msg.pin()
     };
   };
 });
