@@ -68,10 +68,10 @@ bot.on("messageReactionAdd", (msg, emoji, id) =>{
       }});
     };
   };
-  if(emoji.name == "rolf:469056924625928202" && msg.author.id == id){
+  if(emoji.id == "469056924625928202" && msg.author.id == id){
     msg.removeReaction("rolf:469056924625928202", id);
   };
-  if(emoji.name == "rolf:469056924625928202" && msg.author.id != id){
+  if(emoji.id == "469056924625928202" && msg.author.id != id){
     var count = msg.reactions.get("rolf:469056924625928202").count
     if(count > 2){
       msg.pin()
