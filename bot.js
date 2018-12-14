@@ -72,12 +72,7 @@ bot.on("messageReactionAdd", (msg, emoji, id) =>{
     msg.removeReaction("rolf:469056924625928202", id);
   };
   if(emoji.id == "469056924625928202" && msg.author.id != id){
-    var count = 0;
-    msg.reactions.forEach(emote => {
-      if(emote.emoji.id == "469056924625928202"){
-        count = emote.count
-      };
-    });
+    var count = msg.reactions["469056924625928202"].count;
     if(count > 2){
       msg.pin()
     };
