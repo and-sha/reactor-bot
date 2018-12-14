@@ -55,12 +55,12 @@ bot.on("messageCreate", (msg) => {
   }
 });
 
-bot.on("messageReactionAdd", (msg, emoji, id) =>{
+bot.on("messageReactionAdd", (msg, emoji, userid) =>{
   /*if(emoji.name == "face_palm" || emoji.name == "🤦"){
-    console.log(`${msg.author.username} опечатался, ${msg.channel.guild.members.get(id).username} нашёл опечатку`);
+    console.log(`${msg.author.username} опечатался, ${msg.channel.guild.members.get(userid).username} нашёл опечатку`);
     msg.channel.createMessage("тест");
   }*/
-  if(emoji.name == "🔽" && typeof msg.embeds[0] !== 'undefined' && id != "426553252696293376"){
+  if(emoji.name == "🔽" && typeof msg.embeds[0] !== 'undefined' && userid != "426553252696293376"){
     if(msg.embeds[0].title == "Список команд бота:"){
       msg.edit({ "embed": {
         "title": "Другие функции:",
@@ -68,10 +68,10 @@ bot.on("messageReactionAdd", (msg, emoji, id) =>{
       }});
     };
   };
-  if(emoji.id == "469056924625928202" && msg.author.id == id){
-    msg.removeReaction("rolf:469056924625928202", id);
+  if(emoji.id == "469056924625928202" && msg.author.id == userid){
+    msg.removeReaction("rolf:469056924625928202", userid);
   };
-  if(emoji.id == "469056924625928202" && msg.author.id != id){
+  if(emoji.id == "469056924625928202" && msg.author.id != userid){
     var count = msg.reactions[id ? `${emoji.name}:${id}` : emoji.name].count;
     if(count > 2){
       msg.pin()
