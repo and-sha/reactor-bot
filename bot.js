@@ -76,6 +76,20 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
     if(count > 2){
       msg.pin()
     };
+  if(emoji.id == "476190865434607661" && msg.author.id !== userid){
+var cownt = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count
+    if(cownt > 2){
+	msg.delete()
+	// Удаление сообщения при 3 тхонках
+      };
+   if(emoji.id == "464610690628452352" && msg.author.id !== userid){
+	var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count
+      if(count > 2){
+	msg.delete()
+	//Удаление сообщения при 3 баянах
+	  };
+	}
+    };
   };
 });
 
