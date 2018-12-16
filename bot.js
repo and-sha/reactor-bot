@@ -68,6 +68,7 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
       }});
     };
   };
+  try{
   if(emoji.id == "469056924625928202" && msg.author.id == userid){
     msg.removeReaction("rolf:469056924625928202", userid);
   };
@@ -91,6 +92,7 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
 	//Удаление сообщения при 3 баянах
     };
   };
+  } catch(err) { console.log("Сасай, ошибка!"); };
 });
 
 bot.on("messageDelete", (msg) => {
