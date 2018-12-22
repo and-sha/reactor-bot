@@ -79,10 +79,10 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
     };
   };
   if(emoji.id == "464610690628452352"){
-    var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count
+    var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count > 2){
-      msg.delete();
-	//Удаление сообщения при 3 баянах
+      msg.delete(); //Удаление сообщения при 3 баянах
+      bot.createMessage(bot.getDMChannel("348766778501103616", `Удалён баян от ${msg.author.username} (${msg.author.id}), дата отправки ${new Date(msg.timestamp).toUTCString()}`);
     };
   };
   } catch(err) { console.log("Сасай, ошибка!"); };
