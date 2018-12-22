@@ -83,7 +83,7 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
     if(count > 2){
       msg.delete(); //Удаление сообщения при 3 баянах
       var byndate = new Date(msg.timestamp);
-      bot.createMessage(bot.getDMChannel("348766778501103616"), `Удалён баян от ${msg.author.username} (${msg.author.id}), дата отправки ${byndate.toUTCString()}`);
+      bot.getDMChannel("348766778501103616").then(channel => channel.createMessage(`Удалён баян от ${msg.author.username} (${msg.author.id}), дата отправки ${byndate.toUTCString()}`));
     };
   };
   } catch(err) { console.log("Сасай, ошибка!"); };
