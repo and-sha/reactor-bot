@@ -78,13 +78,6 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
       msg.pin()
     };
   };
-  if(emoji.id == "476190865434607661"){
-    var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count
-    if(count > 2){
-	msg.delete();
-	// Удаление сообщения при 3 тхонках
-    };
-  };
   if(emoji.id == "464610690628452352"){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count
     if(count > 2){
