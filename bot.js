@@ -55,7 +55,7 @@ bot.on("messageCreate", (msg) => {
     msg.addReaction("lul4:463923464420458516");
     msg.addReaction("rolf:469056924625928202");
   }
-  if(msg.channel.id != "465401977346457610" && msg.content.search('(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]') != -1)
+  if(msg.channel.id != "465401977346457610" && msg.author.id != "426553252696293376" && msg.content.search('(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]') != -1)
   {
     if(msg.author.id != lastpidor){ msg.channel.createMessage(`${msg.author.username}, Ваша заявка принята, ожидайте СМС с результатом..`); pidorcount = 0; };
     if(pidorcount >= 1){ msg.channel.guild.kickMember(msg.author.id, "Тiкай, пiдор") };
