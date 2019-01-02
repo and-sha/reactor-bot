@@ -2,6 +2,8 @@ const Eris = require("eris");
 var request = require('request');
 const fs = require('fs');
 var obj;
+var lastpidor = "";
+var pidorcount = 0;
 var bot = new Eris.CommandClient(process.env.token, {}, {
   description: "Бот с разными полезностями для Просто Сервера",
   owner: "andysha#2148",
@@ -53,6 +55,15 @@ bot.on("messageCreate", (msg) => {
     msg.addReaction("lul4:463923464420458516");
     msg.addReaction("rolf:469056924625928202");
   }
+  if(msg.channel.id != "465401977346457610" && msg.content.search('(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]') != -1)
+  {
+    if(msg.author.id != lastpidor){ msg.channel.createMessage(`${msg.author.username}, Ваша заявка принята, ожидайте СМС с результатом..`); pidorcount = 0; };
+    if(pidorcount >= 1){ msg.channel.guild.kickMember(msg.author.id, "Тiкай, пiдор") };
+    lastpidor = msg.author.id;
+    pidorcount += 1;
+    bot.getDMChannel("142832324214521857").then(channel => channel.createMessage(`Посмотри на ${msg.author.mention} (${msg.author.username}, ${msg.author.id}), разве он не пидор? Пидорнулся уже ${pidorcount}-й раз`));
+    msg.delete(`Пидору ${msg.author.username} не удалось попиариться`);
+  };
 });
 
 bot.on("messageReactionAdd", (msg, emoji, userid) =>{
