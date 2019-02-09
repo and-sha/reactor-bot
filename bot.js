@@ -45,7 +45,7 @@ bot.on("messageCreate", (msg) => {
     msg.addReaction("lul4:463923464420458516");
   }
   //Функционал для Просто Сервера
-  if(msg.channel.id == 371446270264606742 && ( typeof msg.attachments[0] !== 'undefined' || msg.content.search('((?:http|https)(?::\\/{2}[\\w]+)(?:[\\/|\\.]?)(?:[^\\s"]*))') !== -1)){
+  if(msg.channel.id == 543676496573759490 && ( typeof msg.attachments[0] !== 'undefined' || msg.content.search('((?:http|https)(?::\\/{2}[\\w]+)(?:[\\/|\\.]?)(?:[^\\s"]*))') !== -1)){
     console.log("Заценил мемасик на Просто Сервере");
     msg.addReaction("bayan:464610690628452352");
     msg.addReaction("thonk:380570863873032192");
@@ -80,16 +80,16 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
     };
   };
   try{
-  if(emoji.id == "469056924625928202" && msg.author.id == userid){
+  if(emoji.id == "543676496573759490" && msg.author.id == userid){
     msg.removeReaction("rolf:469056924625928202", userid);
   };
-  if(emoji.id == "469056924625928202" && msg.author.id != userid){
+  if(emoji.id == "543676496573759490" && msg.author.id != userid){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count > 2){
       msg.pin()
     };
   };
-  if(emoji.id == "464610690628452352"){
+  if(emoji.id == "543676496573759490"){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count > 2){
       msg.delete(); //Удаление сообщения при 3 баянах
