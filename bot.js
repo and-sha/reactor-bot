@@ -80,16 +80,16 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
     };
   };
   try{
-  if(emoji.id == "543676496573759490" && msg.author.id == userid){
+  if(emoji.id == "469056924625928202" && msg.author.id == userid){
     msg.removeReaction("rolf:469056924625928202", userid);
   };
-  if(emoji.id == "543676496573759490" && msg.author.id != userid){
+  if(emoji.id == "469056924625928202" && msg.author.id != userid){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count > 2){
       msg.pin()
     };
   };
-  if(emoji.id == "543676496573759490"){
+  if(emoji.id == "464610690628452352"){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count > 2){
       msg.delete(); //Удаление сообщения при 3 баянах
