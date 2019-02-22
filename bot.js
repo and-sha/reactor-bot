@@ -83,9 +83,9 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
   if(emoji.id == "469056924625928202" && msg.author.id == userid){
     msg.removeReaction("rolf:469056924625928202", userid);
   };
-  if(emoji.id == "469056924625928202" && msg.author.id != userid){
+  if(emoji.id == "469056924625928202" && msg.author.id != userid && msg.channel.id == "543676496573759490"){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
-    if(count > 2){
+    if(count == 3){
       if(typeof msg.attachments[0] !== "undefined"){var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':msg.attachments[0].url}}}}
       else{var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL}}}};
       bot.createMessage("548099984336355328", embed);
@@ -93,7 +93,7 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
   };
   if(emoji.id == "464610690628452352"){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
-    if(count > 2){
+    if(count == 3){
       if(typeof msg.attachments[0] !== "undefined"){var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':msg.attachments[0].url}}}}
       else{var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL}}}};
       bot.createMessage("548365628147236874", embed);
