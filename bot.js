@@ -86,12 +86,17 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
   if(emoji.id == "469056924625928202" && msg.author.id != userid){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count > 2){
-      msg.pin()
+      if(typeof msg.attachments[0] !== "undefined"){var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':msg.attachments[0].url}}}}
+      else{var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL}}}};
+      bot.createMessage("548099984336355328", embed);
     };
   };
   if(emoji.id == "464610690628452352"){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count > 2){
+      if(typeof msg.attachments[0] !== "undefined"){var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':msg.attachments[0].url}}}}
+      else{var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL}}}};
+      bot.createMessage("548365628147236874", embed);
       msg.delete(); //Удаление сообщения при 3 баянах
       var byndate = new Date(msg.timestamp);
       bot.getDMChannel("348766778501103616").then(channel => channel.createMessage(`Удалён баян от ${msg.author.username} (${msg.author.id}), дата отправки ${byndate.toUTCString()}`));
