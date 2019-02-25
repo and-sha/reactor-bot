@@ -100,8 +100,10 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
           'url': 'https://api.imgur.com/3/image',
           'headers': { 'Authorization': `Client-ID ${process.env.clientid}` },
           'form': { 'image': msg.attachments[0].url }}, function(error, responce, body){
-          image = JSON.parse(body).data.link;
+          var res = JSON.parse(body);
+          image = res.data.link;
           console.log(image);
+          console.log(res)
         });
         var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':image}}}
       }
