@@ -110,7 +110,7 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
       bot.getDMChannel("348766778501103616").then(channel => channel.createMessage(`Удалён баян от ${msg.author.username} (${msg.author.id}), дата отправки ${byndate.toUTCString()}`));
     };
   };
-  } catch(err) { console.log("Сасай, ошибка!"); };
+  } catch(err) { console.log(err); };
 });
 
 bot.on("messageDelete", (msg) => {
