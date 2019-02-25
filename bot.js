@@ -102,13 +102,12 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
           'form': { 'image': msg.attachments[0].url }}, function(error, responce, body){
           var res = JSON.parse(body);
           image = res.data.link;
-          console.log(msg.attachments[0].url);
           console.log(image);
-          console.log(res);
         });
         var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':image}}}
       }
       else{var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL}}}};
+      console.log(embed);
       bot.createMessage("548365628147236874", embed);
       msg.delete(); //Удаление сообщения при 3 баянах
       var byndate = new Date(msg.timestamp);
