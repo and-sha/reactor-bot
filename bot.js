@@ -101,6 +101,7 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
           'headers': { 'Authorization': `Client-ID ${process.env.clientid}` },
           'form': { 'image': msg.attachments[0].url }}, function(error, responce, body){
           image = JSON.parse(body).data.link;
+          console.log(image);
         });
         var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':image}}}
       }
