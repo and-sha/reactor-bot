@@ -94,7 +94,15 @@ bot.on("messageReactionAdd", (msg, emoji, userid) =>{
   if(emoji.id == "464610690628452352"){
     var count = msg.reactions[emoji.id ? `${emoji.name}:${emoji.id}` : emoji.name].count;
     if(count == 3){
-      if(typeof msg.attachments[0] !== "undefined"){var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':msg.attachments[0].url}}}}
+      if(typeof msg.attachments[0] !== "undefined"){
+        request.post({
+          'url': 'https://api.imgur.com/3/image',
+          'headers': { 'Authorization': `Client-ID ${process.env.clientid}` },
+          'form': { 'image': msg.attachments[0].url }}, function(error, responce, body){
+          var image = JSON.parse(body).data.link;
+        });
+        var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL},'image':{'url':image}}}
+      }
       else{var embed = {'embed':{'description':msg.content,'author':{'name':msg.author.username,'icon_url':msg.author.avatarURL}}}};
       bot.createMessage("548365628147236874", embed);
       msg.delete(); //Удаление сообщения при 3 баянах
