@@ -4,7 +4,7 @@ const fs = require('fs');
 var obj;
 var lastpidor = "";
 var pidorcount = 0;
-var playing = 0;
+//var playing = 0;
 var bot = new Eris.CommandClient(process.env.token, {}, {
   description: "Бот с разными полезностями для Просто Сервера",
   owner: "andysha#2148",
@@ -19,7 +19,7 @@ bot.on("ready", () => {
 	console.log("Готов!");
   bot.editStatus("online", {name: "мемасики | *help", type: 3});
 });
-
+/*
 bot.on("presenceUpdate", (member) => {
   if(member.id == "142832324214521857"){
     if(typeof member.game !== "null"){
@@ -32,7 +32,7 @@ bot.on("presenceUpdate", (member) => {
     } else { playing = 0; };
   };
 });
-
+*/
 bot.on("messageCreate", (msg) => {
   //Функционал для обоих серверов
   if(msg.mentionEveryone){
